@@ -1,0 +1,27 @@
+<!--{{this.massiv}}-->
+<!--<div class="row" *ngFor="let row of this.massiv">-->
+<!--    <div class="card">{{row}}</div>-->
+<!--  </div>-->
+
+<form #myForm="ngForm" novalidate (ngSubmit)="onSubmit(myForm)">
+  <div class="form-group">
+    <label>weight</label>
+    <input class="form-control" name="weight" ngModel required />
+  </div>
+  <div class="form-group">
+    <label>price</label>
+    <input class="form-control" name="price" ngModel required />
+  </div>
+  <div class="form-group">
+    <label>maxW</label>
+    <input class="form-control" name="maxW" ngModel required  />
+  </div>
+  <div class="form-group">
+    <label>names</label>
+    <input class="form-control" name="names" ngModel  required  />
+  </div>
+  <div class="form-group">
+    <input type="submit" [disabled]="myForm.invalid" class="btn btn-default" value="Отправить" />
+    </div>
+</form>
+
