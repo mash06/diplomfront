@@ -11,5 +11,4 @@ export class TheoryComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-}
+ }

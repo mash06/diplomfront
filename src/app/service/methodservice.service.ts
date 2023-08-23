@@ -3,6 +3,11 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import {data} from "../modules/data";
+import {dynamic} from "../modules/dynamic";
+import {methvetv} from "../methvetv";
+import {dipdb} from "../modules/dipdb";
+import {responsethree} from "../modules/responsethree";
+import {dataga} from "../modules/dataga";
 
 @Injectable({providedIn: 'root'})
 export class methodserviceService {
@@ -10,17 +15,24 @@ export class methodserviceService {
 
   constructor(private http: HttpClient){}
 
-  public getname(): Observable<String[]> {
-    return this.http.get<String[]>(`${this.apiServerUrl}`);
+  public sendDataDyn(dt: data): Observable<dynamic> {
+    return this.http.post<dynamic>(`${this.apiServerUrl}/dataDyn`, dt);
   }
 
-  public getmassiv(): Observable<String[][]> {
-    return this.http.get<String[][]>(`${this.apiServerUrl}/massiv`);
+  public senddataZhad(dt: data): Observable<methvetv> {
+    return this.http.post<methvetv>(`${this.apiServerUrl}/dataZhad`, dt);
   }
 
-  public senddata(dt: data): Observable<data> {
-    console.log(dt.maxW);
-    return this.http.post<data>(`${this.apiServerUrl}/data`, dt);
+  public senddataMethVetv(dt: data): Observable<methvetv> {
+    return this.http.post<methvetv>(`${this.apiServerUrl}/dataMethVetv`, dt);
+  }
+
+  public senddataGenAlg(dt: dataga): Observable<responsethree> {
+    return this.http.post<responsethree>(`${this.apiServerUrl}/dataGenAlg`, dt);
+  }
+
+  public addSol(herorep: dipdb): Observable<dipdb> {
+    return this.http.post<dipdb>(`${this.apiServerUrl}/add`, herorep);
   }
 
 }

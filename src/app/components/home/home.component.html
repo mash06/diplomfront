@@ -3,25 +3,97 @@
 <!--    <div class="card">{{row}}</div>-->
 <!--  </div>-->
 
-<form #myForm="ngForm" novalidate (ngSubmit)="onSubmit(myForm)">
-  <div class="form-group">
-    <label>weight</label>
-    <input class="form-control" name="weight" ngModel required />
-  </div>
-  <div class="form-group">
-    <label>price</label>
-    <input class="form-control" name="price" ngModel required />
-  </div>
-  <div class="form-group">
-    <label>maxW</label>
-    <input class="form-control" name="maxW" ngModel required  />
-  </div>
-  <div class="form-group">
-    <label>names</label>
-    <input class="form-control" name="names" ngModel  required  />
-  </div>
-  <div class="form-group">
-    <input type="submit" [disabled]="myForm.invalid" class="btn btn-default" value="Отправить" />
+<h1 class="form-text" > Решение задачи методом динамического программирования </h1>
+<div>
+  <form #myForm="ngForm" novalidate (ngSubmit)="onSubmit(myForm)" class = "form-object">
+    <div class="form-cont">
+      <select onchange="if (this.value) window.location.href = this.value" class="mat-form-class">
+        <option value="" selected class="mat-form-select">Решить другим алгоритмом:</option>
+        <option *ngFor="let link of links" [value]="link.value">
+          {{link.viewValue}}
+        </option>
+      </select>
+      <div class="form-object__cont">
+        <label class = "form-object_info">Веса:</label>
+        <input class="form-object__field" style="width: 310px" name="weight" id="wei" #wei ngModel required />
+      </div>
+      <div class="form-object__cont">
+        <label class = "form-object_info">Полезность:</label>
+        <input class="form-object__field" style="width: 255px" name="price" id = "pri" #pri ngModel required />
+      </div>
+      <div class="form-object__cont">
+        <label class = "form-object_info">Максимальная вместимость:</label>
+        <input class="form-object__field"  style="width: 126px" name="maxWeight" id="maxw" #maxw ngModel  required  />
+      </div>
+      <div class="form-object__cont">
+        <label class = "form-object_info">Названия объектов: </label>
+        <input class="form-object__field" style="width: 193px; margin-bottom: 5px" name="names"  id="nam" #nam ngModel  required  />
+      </div>
+      <div class="form-object__cont" style="text-align: center;">
+
+        <label class="input-file" >
+          Или
+          <input type="file"  (change)="onFileChange($event,myForm)" multiple="false" name="file"/>
+          <span>Выберите файл</span>
+        </label>
+      </div>
     </div>
-</form>
+    <input type="submit" [disabled]="myForm.invalid" class="form-button" value="Решить" />
+  </form>
+
+
+
+  <div *ngIf = "cl">
+  <section class="second">
+    <div class="wrapper2">
+      <button (click)="addHero(wei.value,pri.value,maxw.value,nam.value,resW,resP,objects)" class="button-fav" >{{text}}</button>
+      <label class="form-resp">Исходные данные: </label>
+      <img src="data:image/jpeg;base64,{{image}}" style="margin-bottom: 30px; margin-top: 10px">
+      <label class="form-resp" style="margin-bottom: 50px">Итоговый набор ранца: </label>
+      <img src="data:image/jpeg;base64,{{image2}}" style="margin-left: 0; margin-top: 10px"><br>
+
+      <label class="form-resp">Набор ранца: </label>
+  <div class="form-resp_data"> {{this.objects}}</div>
+<label class="form-resp">Итоговый вес: </label>
+  <div class="form-resp_data">{{this.resW}}</div>
+<label class="form-resp">Итоговая полезность: </label>
+  <div class="form-resp_data">{{this.resP}}</div>
+
+
+<label class="form-resp" style="margin-bottom: 50px ">Решение: </label>
+<table>
+    <tr *ngFor="let row of this.resh">
+       <td *ngFor="let tab of row">
+           {{tab}}
+       </tr>
+</table>
+
+<label class="form-resp" style="margin-bottom: 50px">По таблице определяем, какие предметы войдут в ранец : </label>
+  <div class="form-resp_data" *ngFor="let row of this.obr">{{row}}</div>
+<label class="form-resp">Таблица: </label>
+<table style="margin-left: 0;">
+  <tr *ngFor="let row of this.table" >
+     <td *ngFor="let tab of row" style="padding: 5px; font-size: 15px">
+          {{tab}}
+  </tr>
+</table>
+
+    </div>
+  </section>
+  </div>
+</div>
+
+
+<!--<table>-->
+<!--  <tbody>-->
+<!--  <tr *ngFor="let row of data">-->
+<!--    <td *ngFor="let cell of row">-->
+<!--      {{cell}}-->
+<!--    </td>-->
+<!--  </tr>-->
+<!--  </tbody>-->
+<!--</table>-->
+
+<!--<label >Набор ранца: </label>&ndash;&gt;-->
+<!--  <div >{{this.datas}}</div>-->
 

@@ -1,5 +1,29 @@
-<div class='wrapper'>
-  <div class="container">
-    <router-outlet></router-outlet>
+<div class="back">
+  <div class="header_box">
+  <header class="header">
+  <div class="wrapper">
+    <div class="header_wrapper">
+        <a href="/" class="header_logo" style="padding-top: 27px">Главная</a>
+
+
+      <nav class="header_nav">
+        <ul class="header_list">
+          <li class="header_item" >
+            <a href="/db-solution" class="header_link">Избранное</a>
+          </li>
+          <li class="header_item" >
+            <a href="/methods" class="header_link">Методы решения</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
   </div>
+</header>
+  </div>
+
+<div class="intro">
+  <div class="wrapper">
+     <router-outlet></router-outlet>
+  </div>
+</div>
 </div>
